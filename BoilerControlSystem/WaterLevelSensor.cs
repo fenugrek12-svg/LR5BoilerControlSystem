@@ -6,6 +6,7 @@ namespace BoilerControlSystem
     {
         private static readonly Random _rnd = new Random();
         public double CurrentLevel { get; private set; }
+        public override double Value => CurrentLevel;
 
         public WaterLevelSensor(string name) : base(name)
         {
@@ -15,7 +16,7 @@ namespace BoilerControlSystem
         public override void Measure()
         {
             CurrentLevel += (_rnd.NextDouble() * 10.0 - 5.5);
-            Console.WriteLine($"{Name} measured water level {CurrentLevel}.");
+            Console.WriteLine($"{Name} measured water level {CurrentLevel:F2}.");
         }
     }
 }
